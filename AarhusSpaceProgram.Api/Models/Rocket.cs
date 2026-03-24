@@ -16,5 +16,5 @@ public class Rocket
     [MaxLength(100)]
     public string Manufacturer { get; set; } = string.Empty;
 
-    public List<Mission> Missions { get; set; } = new();
+    public Mission? Mission { get; set; }
 }
