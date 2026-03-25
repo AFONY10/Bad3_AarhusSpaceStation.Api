@@ -3,6 +3,7 @@ using Scalar.AspNetCore;
 using Serilog;
 using AarhusSpaceProgram.Api.Data;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Serilog
@@ -25,6 +26,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    DbInitializer.Initialize(context);
+}
 
 // Map OpenAPI JSON endpoint at /openapi/v1.json
 app.MapOpenApi("/openapi/{documentName}.json");
