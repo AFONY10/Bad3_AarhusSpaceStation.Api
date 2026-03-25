@@ -24,6 +24,9 @@ builder.Services.AddOpenApi();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Mission service
+builder.Services.AddScoped<AarhusSpaceProgram.Api.Services.IMissionService, AarhusSpaceProgram.Api.Services.MissionService>();
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())

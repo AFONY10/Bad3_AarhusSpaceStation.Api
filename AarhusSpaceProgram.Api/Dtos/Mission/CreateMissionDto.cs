@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using AarhusSpaceProgram.Api.Models;
 
 namespace AarhusSpaceProgram.Api.Dtos.Missions;
 
@@ -11,13 +11,10 @@ public class CreateMissionDto
 
     public DateOnly? LaunchDate { get; set; }
 
-    public string? Status { get; set; }
-
     public int? ManagerId { get; set; }
     public int? RocketId { get; set; }
     public int? LaunchpadId { get; set; }
     public int? TargetCelestialBodyId { get; set; }
 
-    public List<int>? AstronautIds { get; set; } = new();
-    public List<int>? ScientistIds { get; set; } = new();
+    public MissionStatus Status { get; set; } = MissionStatus.Created;
 }
