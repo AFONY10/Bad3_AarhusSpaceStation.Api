@@ -1,5 +1,4 @@
 using AarhusSpaceProgram.Api.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace AarhusSpaceProgram.Api.Data;
 
@@ -7,8 +6,6 @@ public static class DbInitializer
 {
     public static void Initialize(ApplicationDbContext context)
     {
-        context.Database.Migrate();
-
         if (context.Missions.Any())
         {
             return;
